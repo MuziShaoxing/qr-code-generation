@@ -1,0 +1,42 @@
+{
+    "manifest_version": 3, 
+    /* 扩展程序的清单版本 */
+    "name": "二维码生成", 
+    /* 扩展程序的名称 */
+    "version": "2.0.5", 
+    /* 扩展程序的版本号 */
+    "description": "这是一款便捷的二维码生成插件，右键选中文本即可快速生成二维码，支持普通文本、拨号及联系人格式二维码，还可自定义功能设置（双击二维码），界面简洁易用。", 
+    /* 扩展程序的功能描述 */
+    "icons": {
+        "48": "icons/icon48.png" 
+    },
+    /* 扩展程序的图标 */
+    "options_ui": {
+        "page": "options.html", 
+        /* 设置页面 */
+        "open_in_tab": false 
+        /* 是否在新标签页中打开设置页面 */
+    },
+    "background": {
+        "service_worker": "background.js" 
+        /* 后台脚本 */
+    },
+    "action": {
+        "default_popup": "options.html" 
+        /* 默认弹出页面 */
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"], 
+            /* 匹配所有URL */
+            "css": ["icons/styles.css"], 
+            /* 应用样式表 */
+            "js": ["js/content.js"], 
+            /* 执行内容脚本 */
+            "run_at": "document_end" 
+            /* 脚本在页面加载结束时运行 */
+        }
+    ],
+    "permissions": ["activeTab", "downloads", "storage", "contextMenus", "scripting", "tabs"]
+    /* 扩展程序所需的权限 */
+}

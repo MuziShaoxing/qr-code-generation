@@ -1,0 +1,189 @@
+<!DOCTYPE html> <!-- 声明HTML5文档类型 -->
+<html lang="zh-CN"> <!-- 设置文档语言为简体中文 -->
+<head>
+    <!-- 基础元数据 -->
+    <meta charset="UTF-8"> <!-- 设置字符编码为UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式视口设置 -->
+    
+    <!-- 引入JavaScript文件 -->
+    <script src="home.js"></script> <!-- 引入主逻辑脚本 -->
+    
+    <!-- 页面标题 -->
+    <title>二维码生成器设置</title> <!-- 浏览器标签页显示的标题 -->
+    
+    <!-- 内联样式 -->
+    <style>
+        /* ========== 页面整体样式 ========== */
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 中文字体优先 */
+            margin: 0;  /* 清除默认外边距 */
+            padding: 0; /* 清除默认内边距 */
+            background-color: #f8f9fa; /* 浅灰色背景 */
+            color: #444; /* 主文字颜色 */
+            line-height: 1.4; /* 行高设置 */
+        }
+        
+        /* ========== 主容器样式 ========== */
+        .a1 {
+            max-width: 600px; /* 最大宽度限制 */
+            margin: 10px auto; /* 上下边距10px，水平居中 */
+            padding: 30px; /* 内边距 */
+            background-color: #fff; /* 白色背景 */
+            border-radius: 12px; /* 圆角边框 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* 轻微阴影效果 */
+        }
+        
+        /* ========== 大标题样式 ========== */
+        .a2 {
+            text-align: center; /* 文字居中 */
+            margin-top: 0; /* 清除顶部边距 */
+            margin-bottom: 30px; /* 底部边距 */
+            font-size: 24px; /* 字体大小 */
+            font-weight: 500; /* 字体粗细 */
+            color: #333; /* 文字颜色 */
+        }
+        
+        /* ========== 设置区域样式 ========== */
+        .a3 {
+            margin-bottom: 25px; /* 底部外边距 */
+        }
+        
+        /* 设置分类标题样式 */
+        .a4 {
+            font-size: 16px; 
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #555;
+            border-bottom: 1px solid #e0e0e0; /* 底部边框线 */
+            padding-bottom: 8px; /* 底部内边距 */
+        }
+        
+        /* 设置项行样式 */
+        .a5 {
+            display: flex; /* 弹性布局 */
+            align-items: center; /* 垂直居中 */
+            margin-bottom: 1px; 
+            padding: 1px 0;
+        }
+        
+        /* 复选框样式 */
+        .a5 input[type="checkbox"] {
+            margin-right: 12px; /* 右侧外边距 */
+        }
+        
+        /* 设置项文字样式 */
+        .a5 span {
+            font-size: 14px;
+            color: #444;
+        }
+        
+        /* 数字输入框容器 */
+        .a6 {
+            display: flex; /* 弹性布局 */
+            gap: 18px; /* 子元素间距 */
+            margin-top: 12px; /* 顶部外边距 */
+        }
+        
+        /* 数字输入框样式 */
+        input[type="number"] {
+            padding: 10px 14px; /* 内边距 */
+            border: 1px solid #ccc; /* 边框 */
+            border-radius: 6px; /* 圆角 */
+            font-size: 14px; /* 字体大小 */
+            width: 120px; /* 固定宽度 */
+            box-sizing: border-box; /* 盒模型计算方式 */
+        }
+        
+        /* ========== 按钮样式 ========== */
+        button {
+            display: block; /* 块级元素 */
+            margin: 30px auto 0; /* 外边距：上30px，左右自动，下0 */
+            padding: 12px 22px; /* 内边距 */
+            background-color: #4e6ef2; /* 蓝色背景 */
+            color: white; /* 白色文字 */
+            border: none; /* 无边框 */
+            border-radius: 6px; /* 圆角 */
+            font-size: 14px; /* 字体大小 */
+            cursor: pointer; /* 鼠标手型 */
+            transition: background-color 0.2s; /* 颜色过渡动画 */
+        }
+        
+        /* 按钮悬停状态 */
+        button:hover {
+            background-color: #3a56d4; /* 深蓝色 */
+        }
+        
+        /* ========== 提示信息样式 ========== */
+        .a7 {
+            display: flex;
+            justify-content: space-between; /* 两端对齐 */
+            margin-left: 28px; /* 左侧外边距 */
+            color: #777; /* 灰色文字 */
+            font-size: 13px; /* 较小字体 */
+            margin-top: 3px; /* 顶部外边距 */
+        }
+        
+        /* ========== 全局标题样式 ========== */
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 500;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- 主内容容器 -->
+    <div class="a1">
+        <!-- 主标题（带交互效果，见JS） -->
+        <h1>👉🏻 设置 👈🏻</h1>
+        
+        <!-- 通讯录识别设置区域 -->
+        <div class="a3">
+            <h2 class="a4">通讯录识别格式</h2>
+            <!-- 格式1：姓名(电话) -->
+            <div class="a5">
+                <input type="checkbox" id="enableVCardGeneration" checked>
+                <span>张三(13800138000)</span>
+            </div>
+            <!-- 格式2：姓名 电话 -->
+            <div class="a5">
+                <input type="checkbox" id="enableNewContactFormat" checked>
+                <span>张三  13800138000</span>
+            </div>            
+            <!-- 格式3：纯电话号码 -->
+            <div class="a5">
+                <input type="checkbox" id="enablePhoneNumberDetection" checked>
+                <span>13800138000</span>
+            </div>
+        </div>
+
+        <!-- 自动关闭设置区域 -->
+        <div class="a3">
+            <h2 class="a4">自动关闭设置</h2>
+            <div class="a5">
+                <input type="checkbox" id="enableAutoClose" checked>
+                <span>失去焦点后自动关闭</span>
+            </div>
+        </div>
+
+        <!-- 弹窗尺寸设置区域 -->
+        <div class="a3">
+            <h1>窗口大小</h1>
+            <div class="a6">
+                <!-- 宽度设置输入框 -->
+                <input type="number" id="popupWidth" placeholder="宽度" min="300" max="1000" value="300">
+                <!-- 高度设置输入框 -->
+                <input type="number" id="popupHeight" placeholder="高度" min="400" max="1200" value="400">
+            </div>
+            <!-- 默认尺寸提示 -->
+            <div class="a7">默认尺寸: 300px * 400px</div>
+        </div>
+
+        <!-- 保存设置按钮 -->
+        <button id="saveSettings">保存设置</button>
+    </div>
+</body>
+</html>
