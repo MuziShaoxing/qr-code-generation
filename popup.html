@@ -7,6 +7,17 @@
     <title>二维码生成</title>
     <!-- 引入外部CSS样式表 -->
     <link rel="stylesheet" href="home.css">
+    <style>
+        /* 仅添加版权信息的样式 */
+        .copyright {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 10px;
+            color: #666;
+            padding: 1px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
     <!-- 主内容容器 -->
@@ -14,14 +25,20 @@
         <!-- 二维码显示区域 -->
         <div id="qrcode"></div>
         <!-- 输入框包裹容器 -->
-<div class="input-wrapper">
-    <!-- URL输入框 -->
-    <input type="text" id="url" style="text-align: center;">
-</div>
+        <div class="input-wrapper">
+            <!-- URL输入框（文本居中） -->
+            <input type="text" id="url" style="text-align: center;">
+        </div>
+        
+        <!-- 新增的版权信息 -->
+        <div class="copyright">© 2025 少星与DeepSeek联合开发</div>
     </div>
     <!-- 引入主逻辑脚本 -->
     <script src="home.js"></script>
     <!-- 引入二维码生成脚本 -->
     <script src="js/qrcode.js"></script>
+    
+    <!-- 以下是二维码功能实现，仅用于演示 -->
+  
 </body>
 </html>

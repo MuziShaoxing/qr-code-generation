@@ -22,7 +22,7 @@ body {
 /* 主内容容器样式 */
 .container {
   background-color: white;          /* 白色背景 */
-  border-radius: 12px;              /* 圆角边框 */
+  border-radius: 10%;              /* 圆角边框 */
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* 阴影效果 */
   padding: 25px 20px;               /* 内边距 */
   width: 320px;                     /* 固定宽度 */
@@ -55,6 +55,7 @@ body {
   border: 1px solid #ddd;           /* 边框样式 */
   border-radius: 5px;               /* 圆角边框 */
   font-size: 16px;                  /* 字体大小 */
+  text-align: center;               /* 文本居中 */
 }
 
 /* ========== 图片容器样式 ========== */
@@ -96,4 +97,21 @@ img {
 }
 .center-text {
     text-align: center;
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 400px) {
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  #qrcode {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .input-wrapper {
+    margin-top: 5px;
+  }
 }
