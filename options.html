@@ -16,7 +16,7 @@
         }
         
         .a1 {
-            max-width: 600px;
+            min-width: 250px;
             margin: 10px auto;
             padding: 30px;
             background-color: #fff;
@@ -62,21 +62,6 @@
             color: #444;
         }
         
-        .a6 {
-            display: flex;
-            gap: 18px;
-            margin-top: 12px;
-        }
-        
-        input[type="number"] {
-            padding: 10px 14px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
-            width: 120px;
-            box-sizing: border-box;
-        }
-        
         button {
             display: block;
             margin: 30px auto 0;
@@ -92,15 +77,6 @@
         
         button:hover {
             background-color: #3a56d4;
-        }
-        
-        .a7 {
-            display: flex;
-            justify-content: space-between;
-            margin-left: 28px;
-            color: #777;
-            font-size: 13px;
-            margin-top: 3px;
         }
         
         h1 {
@@ -225,18 +201,8 @@
             </div>
         </div>
 
-        <div class="a3">
-            <h1>窗口大小</h1>
-            <div class="a6">
-                <input type="number" id="popupWidth" placeholder="宽度(默认300)" min="300" max="1000" value="300">
-                <input type="number" id="popupHeight" placeholder="高度(默认400)" min="400" max="1200" value="400">
-            </div>
-            <div class="a7">默认尺寸: 300px * 400px</div>
-        </div>
-
         <button id="saveSettings">保存设置</button>
     </div>
     <script src="home.js"></script>
-
 </body>
 </html>

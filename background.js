@@ -18,7 +18,10 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 // 创建二维码弹窗的通用函数
-async function createQRPopup(content, width, height) {
+async function createQRPopup(content) {
+    const width = 300; // 固定宽度
+    const height = 400; // 固定高度
+    
     try {
         // 获取当前屏幕信息
         const displays = await chrome.system.display.getInfo();
@@ -53,28 +56,23 @@ async function createQRPopup(content, width, height) {
 
 // 处理右键菜单点击事件
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-    chrome.storage.local.get(['popupWidth', 'popupHeight'], (result) => {
-        const popupWidth = parseInt(result.popupWidth, 10) || 300;
-        const popupHeight = parseInt(result.popupHeight, 10) || 400;
-        
-        let content = null;
-        
-        switch (info.menuItemId) {
-            case "generateQRCode": content = info.selectionText; break;
-            case "generateLinkQRCode": content = info.linkUrl; break;
-            case "generateAudioQRCode": content = info.srcUrl; break;
-            case "generateImageQRCode": content = info.srcUrl; break;
-            case "generatePageQRCode": content = tab.url; break;
-            default:
-                const contentSource = ["linkUrl", "selectionText", "srcUrl", "frameUrl", "pageUrl"]
-                    .find(source => info[source]);
-                content = info[contentSource];
-        }
+    let content = null;
+    
+    switch (info.menuItemId) {
+        case "generateQRCode": content = info.selectionText; break;
+        case "generateLinkQRCode": content = info.linkUrl; break;
+        case "generateAudioQRCode": content = info.srcUrl; break;
+        case "generateImageQRCode": content = info.srcUrl; break;
+        case "generatePageQRCode": content = tab.url; break;
+        default:
+            const contentSource = ["linkUrl", "selectionText", "srcUrl", "frameUrl", "pageUrl"]
+                .find(source => info[source]);
+            content = info[contentSource];
+    }
 
-        if (content) {
-            createQRPopup(content, popupWidth, popupHeight);
-        } else {
-            alert("请选择要生成二维码的有效内容。");
-        }
-    });
+    if (content) {
+        createQRPopup(content);
+    } else {
+        alert("请选择要生成二维码的有效内容。");
+    }
 });

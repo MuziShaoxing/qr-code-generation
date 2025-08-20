@@ -79,9 +79,7 @@ function setupSaveButton() {
             enablePhoneNumberDetection: document.getElementById('enablePhoneNumberDetection').checked,
             enableVCardGeneration: document.getElementById('enableVCardGeneration').checked,
             enableNewContactFormat: document.getElementById('enableNewContactFormat').checked,
-            enableAutoClose: document.getElementById('enableAutoClose').checked,
-            popupWidth: parseInt(document.getElementById('popupWidth').value) || 300,
-            popupHeight: parseInt(document.getElementById('popupHeight').value) || 400
+            enableAutoClose: document.getElementById('enableAutoClose').checked
         };
         
         chrome.storage.local.set(settings, () => {
@@ -124,21 +122,14 @@ function loadSettings() {
         'enablePhoneNumberDetection',
         'enableVCardGeneration',
         'enableNewContactFormat',
-        'enableAutoClose',
-        'popupWidth',
-        'popupHeight'
+        'enableAutoClose'
     ];
     
     chrome.storage.local.get(settingsKeys, (result) => {
         settingsKeys.forEach(key => {
             const element = document.getElementById(key);
             if (element) {
-                if (key === 'popupWidth' || key === 'popupHeight') {
-                    element.value = result[key] || (key === 'popupWidth' ? 300 : 400);
-                } 
-                else {
-                    element.checked = result[key] !== false;
-                }
+                element.checked = result[key] !== false;
             }
         });
     });
@@ -266,12 +257,15 @@ function setupQRCode() {
  * 处理输入文本
  */
 function processInputText(inputText, settings) {
-    // 优化匹配逻辑：匹配194开头的18位数字格式
-    const minutePattern = /^(194\d{17})(?:分钟：\d+单)?$/;
-    if (minutePattern.test(inputText) && 
-       (inputText.endsWith('40') || inputText.includes('分钟：'))) {
-        return inputText.slice(0, 18);
-    }
+    // 新增：处理特定格式的18位数字
+    // 匹配194开头的18位数字格式，可能后面跟着"分钟：X单"或其他内容
+const optimizedPattern = /^(?:(?:\d{18}40$)|(?=.*分钟：\d+单)[194]\d{17}.*)$/;
+const match = inputText.match(optimizedPattern);
+if (match) {
+    // 提取前18位数字
+    const numbersMatch = inputText.match(/^([194]\d{17})/);
+    return numbersMatch ? numbersMatch[1] : null;
+}
     
     // 手机号码检测
     if (settings.enablePhoneNumberDetection && /^1\d{10}$/.test(inputText)) {
