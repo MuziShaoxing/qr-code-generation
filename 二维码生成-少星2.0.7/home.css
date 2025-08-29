@@ -1,0 +1,117 @@
+/* ========== 全局样式重置 ========== */
+/* 通配符选择器，应用于所有HTML元素 */
+* {
+  margin: 0;       /* 清除所有元素的外边距 */
+  padding: 0;      /* 清除所有元素的内边距 */
+  box-sizing: border-box; /* 设置盒模型为border-box，宽度包含padding和border */
+}
+
+/* ========== 页面整体样式 ========== */
+/* body元素的基础样式 */
+body {
+  font-family: 'Arial', sans-serif; /* 设置默认字体 */
+  background-color: #f5f5f5;        /* 页面背景色 */
+  display: flex;                    /* 启用flex布局 */
+  justify-content: center;          /* 水平居中 */
+  align-items: center;              /* 垂直居中 */
+  height: 100vh;                    /* 视口高度100% */
+  padding: 15px;                    /* 内边距防止内容贴边 */
+}
+
+/* ========== 容器样式 ========== */
+/* 主内容容器样式 */
+.container {
+  background-color: white;          /* 白色背景 */
+  border-radius: 10%;              /* 圆角边框 */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  padding: 25px 20px;               /* 内边距 */
+  width: 320px;                     /* 固定宽度 */
+  max-width: 400px;                 /* 最大宽度限制 */
+  display: flex;                    /* flex布局 */
+  flex-direction: column;           /* 垂直排列子元素 */
+  align-items: center;              /* 子元素水平居中 */
+}
+
+/* ========== 二维码区域样式 ========== */
+/* 二维码容器样式 */
+#qrcode {
+  width: 200px;                     /* 固定宽度 */
+  height: 200px;                    /* 固定高度 */
+  margin: 20px 0;                   /* 上下外边距20px，左右0 */
+}
+
+/* ========== 输入框容器样式 ========== */
+/* 输入框包裹容器 */
+.input-wrapper {
+  width: 100%;                      /* 宽度100%填充父容器 */
+  margin-top: 10px;                 /* 顶部外边距 */
+}
+
+/* ========== 输入框样式 ========== */
+/* URL输入框样式 */
+#url {
+  width: 100%;                      /* 宽度100%填充父容器 */
+  padding: 10px;                    /* 内边距 */
+  border: 1px solid #ddd;           /* 边框样式 */
+  border-radius: 5px;               /* 圆角边框 */
+  font-size: 16px;                  /* 字体大小 */
+  text-align: center;               /* 文本居中 */
+}
+
+/* ========== 图片容器样式 ========== */
+/* 图片容器样式 */
+.image-container {
+  width: 100%;                      /* 宽度100%填充父容器 */
+  max-width: 300px;                 /* 最大宽度限制 */
+  height: auto;                     /* 高度自适应 */
+  display: flex;                    /* flex布局 */
+  justify-content: center;          /* 内容水平居中 */
+}
+
+/* ========== 图片通用样式 ========== */
+/* 所有img元素样式 */
+img {
+  max-width: 100%;                  /* 最大宽度不超过容器 */
+  max-height: 100%;                 /* 最大高度不超过容器 */
+  object-fit: contain;              /* 保持比例完整显示图片 */
+}
+
+/* ========== 按钮基础样式 ========== */
+/* 保存按钮样式 */
+.save-button {
+  background-color: #0078d4;        /* 蓝色背景 */
+  color: white;                     /* 白色文字 */
+  border: none;                     /* 无边框 */
+  padding: 10px 20px;               /* 内边距 */
+  border-radius: 4px;               /* 圆角 */
+  cursor: pointer;                  /* 鼠标指针变为手形 */
+  font-size: 14px;                  /* 字体大小 */
+  width: 100%;                      /* 宽度100%填充父容器 */
+  margin-top: 20px;                 /* 顶部外边距 */
+}
+
+/* ========== 按钮交互状态 ========== */
+/* 保存按钮悬停状态 */
+.save-button:hover {
+  background-color: #005a9e;        /* 悬停时深蓝色背景 */
+}
+.center-text {
+    text-align: center;
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 400px) {
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  #qrcode {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .input-wrapper {
+    margin-top: 5px;
+  }
+}

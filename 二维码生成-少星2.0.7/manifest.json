@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "二维码生成",
+    "version": "2.0.7", 
+    "description": "这是一款便捷的二维码生成插件，右键选中文本即可快速生成二维码...",
+    "icons": {
+        "48": "icons/icon48.png"
+    },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": false
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "options.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+    ],
+    "permissions": ["activeTab", "storage", "contextMenus", "tabs", "system.display", "webNavigation"]
+}

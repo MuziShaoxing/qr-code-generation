@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="home.js"></script>
+    <title>二维码生成器设置</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #444;
+            line-height: 1.4;
+        }
+        
+        .a1 {
+            min-width: 250px;
+            margin: 10px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .a2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .a3 {
+            margin-bottom: 25px;
+        }
+        
+        .a4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #555;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+        
+        .a5 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1px;
+            padding: 1px 0;
+        }
+        
+        .a5 input[type="checkbox"] {
+            margin-right: 12px;
+        }
+        
+        .a5 span {
+            font-size: 14px;
+            color: #444;
+        }
+        
+        button {
+            display: block;
+            margin: 30px auto 0;
+            padding: 12px 22px;
+            background-color: #4e6ef2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        button:hover {
+            background-color: #3a56d4;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        /* 新增悬浮窗样式 */
+        #admire-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(4px);
+        }
+        
+        .admire-container {
+            position: relative;
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 320px;
+            width: 90%;
+            animation: popup 0.3s ease-out;
+        }
+        
+        @keyframes popup {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .close-admire {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-admire:hover {
+            color: #f00;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .admire-title {
+            margin: 0 0 20px 0;
+            color: #e74c3c;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .admire-image {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            margin: 0 auto 15px;
+            border: 1px solid #eee;
+        }
+        
+        .admire-text {
+            color: #666;
+            font-size: 15px;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+        
+        .admire-note {
+            color: #999;
+            font-size: 13px;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="a1">
+        <h1>👉🏻 设置 👈🏻</h1>
+        
+        <div class="a3">
+            <h2 class="a4">通讯录识别格式</h2>
+            <div class="a5">
+                <input type="checkbox" id="enableVCardGeneration" checked>
+                <span>张三(13800138000)</span>
+            </div>
+            <div class="a5">
+                <input type="checkbox" id="enableNewContactFormat" checked>
+                <span>张三  13800138000</span>
+            </div>            
+            <div class="a5">
+                <input type="checkbox" id="enablePhoneNumberDetection" checked>
+                <span>13800138000</span>
+            </div>
+        </div>
+
+        <div class="a3">
+            <h2 class="a4">自动关闭设置</h2>
+            <div class="a5">
+                <input type="checkbox" id="enableAutoClose" checked>
+                <span>失去焦点后自动关闭</span>
+            </div>
+        </div>
+
+        <button id="saveSettings">保存设置</button>
+    </div>
+    <script src="home.js"></script>
+</body>
+</html>
